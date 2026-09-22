@@ -1,0 +1,34 @@
+# Contribución individual -- Etapa XX
+**Equipo:** 48 
+**Integrante:** Magno Exequiel Isler Mendiaz 
+**Fecha:** 2026-09-21
+
+## 1. Aporte realizado
+Describir brevemente las actividades realizadas durante esta etapa.
+- Aporte en la realizacion y modificacion de las normalizaciones de las tablas con Emiliano
+
+## 2. Decisiones en las que participé
+Indicar decisiones relacionadas con el dominio, alcance o reglas de negocio.
+- Indicar modificaciones para la Forma normal 1 y 3
+
+## 3. Problemas o dificultades identificadas
+Describir dificultades encontradas durante el desarrollo.
+- No hubo dificultades en esta seccion
+
+
+## 4. Soluciones o propuestas realizadas
+Explicar brevemente cómo se resolvieron o propusieron resolver las dificultades.
+-
+
+## 5. Evidencias en el repositorio
+Indicar los archivos, commits, issues o pull requests relacionados con el aporte.
+
+- `docs/etapa-01/...`
+- Issue: #XX
+- Pull Request: #XX
+
+
+
+## 6. Reflexión individual
+¿Qué concepto o competencia de Bases de Datos I considero que desarrollé en esta etapa?
+-
