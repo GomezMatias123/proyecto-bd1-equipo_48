@@ -18,6 +18,7 @@ CREATE TABLE EMPLEADO
   ID_empleado INT NOT NULL,
   apellido VARCHAR(50) NOT NULL,
   nombre VARCHAR(50) NOT NULL,
+  dni VARCHAR(20) NOT NULL,
   PRIMARY KEY (ID_empleado)
 );
 
