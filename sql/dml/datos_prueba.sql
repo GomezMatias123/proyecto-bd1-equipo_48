@@ -1,3 +1,6 @@
+USE DragabulK_TCG; 
+GO
+
 INSERT INTO CLIENTE (ID_cliente, dni, nombre, apellido)
     VALUES(1, 45020845, 'MAGNO', 'ISLER'),
     (2, 23045689, 'MAURICIO', 'TADIO'),
@@ -36,7 +39,7 @@ INSERT INTO PRODUCTO (ID_producto, Edicion, Precio_actual, Stock_disponible, Tip
     (4, '30th Anniversary', 23000, 20, 'Sobres'),
     (5, 'Chaos Rissing', 210000, 5, 'Elite Trainer Box'),
     (6, 'Chaos Rissing', 17000, 50, 'Sobres'),
-    (7, 'Chaoss Rissing', 450000, 5, 'Booster Box'),
+    (7, 'Chaos Rissing', 450000, 5, 'Booster Box'),
     (8, 'Perfect Order', 16000, 75, 'Sobres');
 
 -- Casos de prueba para METODODEPAGO
@@ -51,15 +54,15 @@ INSERT INTO METODODEPAGO (ID_metodo_pago, nombre)
     (8, 'Cheque');
 
 -- Casos de prueba para COMPRA
-INSERT INTO COMPRA (ID_compra, ID_empleado, ID_metodo_pago, ID_cliente)
-    VALUES(1, 1, 1, 1),
-    (2, 2, 2, 2),
-    (3, 3, 3, 3),
-    (4, 4, 4, 4),
-    (5, 5, 5, 1),
-    (6, 6, 6, 2),
-    (7, 7, 7, 3),
-    (8, 8, 8, 4);
+INSERT INTO COMPRA (ID_compra, Fecha, ID_empleado, ID_metodo_pago, ID_cliente)
+    VALUES(1, '20260905', 1, 1, 1),
+    (2, '20260912', 2, 2, 2),
+    (3, '20260920', 3, 3, 3),
+    (4, '20260928', 4, 4, 4),
+    (5, '20261003', 5, 5, 1),
+    (6, '20261006', 6, 6, 2),
+    (7, '20261010', 7, 7, 3),
+    (8, '20261014', 8, 8, 4);
 
 -- Casos de prueba para DETALLE_COMPRA
 -- Casos de prueba para DETALLE_COMPRA con precios unitarios correctos
@@ -71,7 +74,11 @@ INSERT INTO DETALLE_COMPRA (Precio_unitario, Cantidad, ID_compra, ID_producto)
     (210000, 1, 5, 5),
     (17000, 6, 6, 6),  
     (450000, 1, 7, 7),
-    (16000, 5, 8, 8);  
+    (16000, 5, 8, 8),
+    (17000, 2, 1, 2),
+    (17000, 4, 2, 6),
+    (23000, 1, 3, 4),
+    (16000, 3, 5, 8); 
 
 -- Casos de prueba para SOCIO
 INSERT INTO SOCIO (Descuento, Beneficio, ID_cliente)

@@ -1,8 +1,11 @@
+USE DragabulK_TCG; 
+GO
+
 -- Comprobantes (TODOS LOS CLIENTES)
 
 SELECT 
     COMPRA.ID_compra AS [Nro Comprobante],
-    FORMAT(GETDATE(), 'dd/MM/yyyy') AS [Fecha Emisión],
+    FORMAT(COMPRA.Fecha, 'dd/MM/yyyy') AS [Fecha Emisión],
     CONCAT(CLIENTE.apellido, ', ', CLIENTE.nombre) AS [Comprador / Cliente],
     CONCAT(EMPLEADO.apellido, ', ', EMPLEADO.nombre) AS [Vendedor AT],
     METODODEPAGO.nombre AS [Forma de Pago],
@@ -24,5 +27,6 @@ INNER JOIN DETALLE_COMPRA ON COMPRA.ID_compra = DETALLE_COMPRA.ID_compra
 INNER JOIN PRODUCTO ON DETALLE_COMPRA.ID_producto = PRODUCTO.ID_producto
 INNER JOIN CLIENTE ON COMPRA.ID_cliente = CLIENTE.ID_cliente
 INNER JOIN EMPLEADO ON COMPRA.ID_empleado = EMPLEADO.ID_empleado
-INNER JOIN METODODEPAGO ON COMPRA.ID_metodo_pago = METODODEPAGO.ID_metodo_pago;
+INNER JOIN METODODEPAGO ON COMPRA.ID_metodo_pago = METODODEPAGO.ID_metodo_pago
 --WHERE COMPRA.ID_compra = 2; -- Si se desea el comprobante de un cliente (sacar ; de arriba)
+ORDER BY COMPRA.ID_compra, PRODUCTO.ID_producto;
