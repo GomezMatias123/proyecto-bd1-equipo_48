@@ -132,7 +132,7 @@ Se repite cada operación en un bucle para que la diferencia sea medible. Ambas 
 ### 7.1 INSERT directo vs. procedimiento (1000 operaciones)
 
 | Método | Tiempo total | 
-|---|---|---|
+|---|---|
 | `INSERT` directo | 111 ms |
 | `sp_Producto_Insertar` | 443 ms | 
 
@@ -140,10 +140,10 @@ Evidencia: `10_eficiencia_insert`.
 
 ### 7.2 Función vs. consulta directa (5000 operaciones)
 
-| Método | Tiempo total | Por operación |
-|---|---|---|
+| Método | Tiempo total | 
+|---|---|
 | `fn_TotalCompra(3)` | 70 ms |
-| Consulta directa equivalente | 32 ms | ms |
+| Consulta directa equivalente | 32 ms |
 
 Evidencia: `11_eficiencia_funcion`.
 
