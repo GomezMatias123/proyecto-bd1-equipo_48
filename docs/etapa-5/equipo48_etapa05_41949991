@@ -1,0 +1,27 @@
+## Contribución individual -- Etapa V
+
+Equipo: 48
+Integrante:  Gomez Matias Nicoals
+Fecha: 2026-10-29
+
+## Aporte realizado
+
+Se implemento los procedimintos y funciones almacenadas en un script.sql trabajando con los datos almacenados en la base de datos.
+
+## Problemas o dificultades identificadas
+
+Como dificultad identificamos que en la tabla producto no colocamos `CHECK`, ni una clave única sobre edición y tipo, por lo que se decidió centralizar las reglas de negocio dentro de los procedimientos almacenados
+
+## Soluciones o propuestas realizadas
+ **IF EXISTS (SELECT 1 FROM PRODUCTO WHERE Edicion = @Edicion AND Tipo = @Tipo) THROW 50003, 'Ya existe un producto con esa edicion y tipo.', 1;**
+ Dentro del procedimiento se incorporo de esta manera esta regla de negocio para evitar duplicados a la hora de insertar productos.
+
+
+## Evidencias en el repositorio
+- docs/etapa-5/procedimientos_funciones/investigacion.md & - docs/etapa-5/procedimientos_funciones/evidencias/**Capturas de tablas en PNG**
+- sql/Procedimientos_funciones/script.sql
+
+
+## Reflexión individual
+
+En estapa logre profundizar la sintaxis de los procedimientos y funciones, pude comprender su orden de ejecución, sus buenas practicas y su utilidad para poder sacarle rentabilidad a la información de una base de datos.
