@@ -71,7 +71,7 @@ Valida antes de borrar:
 | 50005 | Tiene ventas registradas (`DETALLE_COMPRA`) |
 | 50006 | Tiene reposiciones registradas (`REPOSICION_PRODUCTOS`) |
 
-### 5.4 Funciones
+### 5.2 Funciones
 
 - **`fn_TotalCompra(@ID_compra)`**: Realiza la operacion `Precio_unitario × Cantidad` del detalle. Devuelve 0 si la compra no tiene detalle.
 - **`fn_TotalConDescuento(@ID_compra)`**: Llama a `fn_TotalCompra` y aplica el descuento del cliente si es socio. Usa `100.0` para evitar división entera.
