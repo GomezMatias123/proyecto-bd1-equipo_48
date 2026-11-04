@@ -1,0 +1,32 @@
+# Contribución individual -- Etapa V
+
+Equipo: 48  
+Integrante: Gomez Matias Nicolas  
+Fecha: 2026-10-29  
+
+## Aporte realizado
+
+Se investigó e implementó el esquema de **Seguridad** a nivel de usuarios, logins y roles personalizados en el motor SQL Server Express para la base de datos del sistema de ventas. 
+
+Se configuró el principio de mínimo privilegio asignando accesos directos (ejecución sobre procedimientos almacenados) y indirectos (a través de roles de consulta), demostrando la diferencia de comportamiento entre la ejecución de sentencias directas (`INSERT`/`SELECT`) y la ejecución mediante rutinas autorizadas (`EXEC`).
+
+## Problemas o dificultades identificadas
+
+Como dificultad principal se identificó que otorgar permisos directos de inserción u modificación sobre las tablas principales (`Venta`, `Producto`, etc.) exponía la base de datos a modificaciones accidentales o no autorizadas que podían saltear las validaciones de negocio. Asimismo, administrar permisos de consulta usuario por usuario resultaba ineficiente y poco mantenible a escala.
+
+## Soluciones o propuestas realizadas
+
+Se estructuró la seguridad en dos niveles claros:
+
+1. **Control mediante Procedimientos Almacenados:** Se denegó el acceso directo de escritura (`INSERT`/`UPDATE`) a los usuarios operativos sobre tablas críticas como `Venta`, otorgándoles únicamente permisos de ejecución (`GRANT EXECUTE`) sobre procedimientos almacenados específicos (ej. `dbo.sp_RegistrarVentaSimple`). De esta manera, el usuario puede operar solo a través de la lógica controlada por la aplicación.
+2. **Administración por Roles Personalizados:** Se creó el rol de base de datos `rol_consulta_productos` asignándole permisos `GRANT SELECT ON dbo.Producto`, y se gestionaron los accesos de los usuarios agregándolos o removiéndolos del rol mediante `ALTER ROLE`, simplificando la administración.
+
+## Evidencias en el repositorio
+
+- `docs/etapa-5/Seguridad_funciones/investigacion.md`
+- `docs/etapa-5/seguridad/evidencias/pruebas_permisos_roles.png`
+- `sql/Seguridad_funciones/script_seguridad_roles.sql`
+
+## Reflexión individual
+
+En esta etapa logré comprender y aplicar la gestión de la seguridad defensiva en SQL Server Express. Entendí la importancia de aplicar el principio de mínimo privilegio y cómo la combinación de roles con procedimientos almacenados nos permite proteger la integridad de los datos sin limitar la operatividad del sistema de ventas.
