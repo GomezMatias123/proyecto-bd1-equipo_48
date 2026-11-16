@@ -12,20 +12,13 @@ SELECT * FROM COMPRA;
 GO
 
 PRINT '=== 02. MATRIZ DE USUARIOS, ROLES Y PERMISOS ===';
-SELECT 
-    p.name AS Usuario,
-    p.type_desc AS Tipo_Usuario,
-    ISNULL(r.name, 'Sin Rol Asignado (Permisos Directos)') AS Rol_Asociado,
-    ISNULL(perm.permission_name, 'Sin Permisos Específicos') AS Permiso,
-    ISNULL(perm.state_desc, 'N/A') AS Estado,
-    ISNULL(OBJECT_NAME(perm.major_id), 'Base de Datos Completa') AS Objeto_Afectado
-FROM sys.database_principals p
-LEFT JOIN sys.database_role_members rm ON p.principal_id = rm.member_principal_id
-LEFT JOIN sys.database_principals r ON rm.role_principal_id = r.principal_id
-LEFT JOIN sys.database_permissions perm ON perm.grantee_principal_id = p.principal_id 
-    OR perm.grantee_principal_id = r.principal_id
-WHERE p.type IN ('S', 'U')
-ORDER BY p.name, Rol_Asociado;
+CREATE LOGIN usuario_admin WITH PASSWORD = 'Admin123*';
+CREATE LOGIN usuario_lector WITH PASSWORD = 'Lector123*';
+GO
+
+CREATE USER usuario_admin FOR LOGIN usuario_admin;
+CREATE USER usuario_lector FOR LOGIN usuario_lector;
+GO
 
 PRINT '=== 03. PRUEBA DE INSERCION DIRECTA COMO LECTOR (ESPERADO: ERROR 229) ===';
 EXECUTE AS USER = 'usuario_lector';
