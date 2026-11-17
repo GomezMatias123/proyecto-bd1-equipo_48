@@ -189,7 +189,7 @@ END;
 --SE NECESITA UTILIZAR EL COMANDO: DISABLE TRIGGER dbo.impedir_borrar_tablas ON DATABASE
 GO
 
-CREATE TRIGGER impedir_borrar_tablas
+CREATE TRIGGER trg_impedir_borrar_tablas
 ON DATABASE FOR DROP_TABLE AS
 BEGIN
     RAISERROR('No se pueden borrar tablas sin autorizacion', 16, 1);
@@ -213,3 +213,14 @@ ENABLE TRIGGER impedir_borrar_tablas ON DATABASE;
 
 
 -----------------------------------------------------------------------------------
+
+DELETE FROM AuditoriaProducto WHERE ID_producto = 1; -- Asegura que no choque la PK
+UPDATE PRODUCTO SET Precio_actual = 99999 WHERE ID_producto = 1;
+SELECT * FROM AuditoriaProducto WHERE ID_producto = 1;
+
+CREATE TABLE TablaPrueba (id INT);
+DROP TABLE TablaPrueba;
+
+DISABLE TRIGGER impedir_borrar_tablas ON DATABASE;
+DROP TABLE TablaPrueba;
+ENABLE TRIGGER impedir_borrar_tablas ON DATABASE;
