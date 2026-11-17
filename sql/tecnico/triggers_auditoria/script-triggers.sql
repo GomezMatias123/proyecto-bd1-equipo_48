@@ -219,7 +219,7 @@ UPDATE PRODUCTO SET Precio_actual = 99999 WHERE ID_producto = 1;
 SELECT * FROM AuditoriaProducto WHERE ID_producto = 1;
 
 CREATE TABLE TablaPrueba (id INT);
-DROP TABLE TablaPrueba;
+SELECT * FROM TablaPrueba;
 
 DISABLE TRIGGER impedir_borrar_tablas ON DATABASE;
 DROP TABLE TablaPrueba;
