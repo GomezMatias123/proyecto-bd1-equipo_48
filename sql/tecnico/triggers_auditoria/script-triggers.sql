@@ -177,7 +177,7 @@ END;
 --SE NECESITA UTILIZAR EL COMANDO: DISABLE TRIGGER dbo.impedir_borrar_tablas ON DATABASE
 GO
 
-CREATE TRIGGER impedir_borrar_tablas
+CREATE TRIGGER trg_impedir_borrar_tablas
 ON DATABASE FOR DROP_TABLE AS
 BEGIN
     RAISERROR('No se pueden borrar tablas sin autorizacion', 16, 1);
