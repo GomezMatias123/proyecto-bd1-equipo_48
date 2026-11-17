@@ -6,7 +6,7 @@ USE DragabulK_TCG;
 GO
 
 SET NOCOUNT ON;
-
+SELECT * FROM PRODUCTO WHERE ID_producto= 2;
 -- PRUEBA 1: DEMOSTRACIÓN CORRECTA (STOCK SUFICIENTE)
 -- Escenario: Se compran 5 sobres de 'Pitch Black' (ID 2). Como hay unidades en stock, la transacción ocurre exitosamente.
 
@@ -51,7 +51,11 @@ BEGIN TRY
         UPDATE PRODUCTO
         SET Stock_disponible = Stock_disponible - @cantidad_ok
         WHERE ID_producto = @id_producto_ok;
+        PRINT 'Filas modificadas: ' + CAST(@@ROWCOUNT AS VARCHAR(10));
 
+        SELECT ID_producto, Stock_disponible
+        FROM PRODUCTO
+        WHERE ID_producto = @id_producto_ok;
         -- Cerramos de forma segura guardando todo en el disco
         COMMIT TRANSACTION;
         PRINT '### [PRUEBA 1] ÉXITO: Venta registrada con el ID Seguro: ' + CAST(@id_compra_ok AS VARCHAR(10)) + ' ###';

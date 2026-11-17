@@ -12,6 +12,9 @@
 USE DragabulK_TCG 
 GO 
 
+
+
+
 CREATE TABLE AuditoriaCliente
 (
   ID_cliente INT NOT NULL,
@@ -57,6 +60,15 @@ CREATE TABLE AuditoriaProducto
 );
 
 GO 
+
+ALTER TABLE dbo.AuditoriaProducto
+DROP CONSTRAINT PK__Auditori__13C163943058BECA;
+
+ALTER TABLE dbo.AuditoriaProducto
+ADD ID_auditoria INT IDENTITY(1,1) NOT NULL;
+
+ALTER TABLE dbo.AuditoriaProducto
+ADD CONSTRAINT PK_AuditoriaProducto PRIMARY KEY (ID_auditoria);
 
 CREATE TABLE AuditoriaSocio
 (
@@ -181,9 +193,23 @@ CREATE TRIGGER impedir_borrar_tablas
 ON DATABASE FOR DROP_TABLE AS
 BEGIN
     RAISERROR('No se pueden borrar tablas sin autorizacion', 16, 1);
-             --16 indica que el error fue por una operacion del usuario
-             --1 indica en donde ocurrio el error
+                --16 indica que el error fue por una operacion del usuario
+                --1 indica en donde ocurrio el error
     ROLLBACK TRANSACTION; --CANCELA EL DROPTABLE
 END;
+
+DELETE FROM AuditoriaProducto WHERE ID_producto = 1; -- Asegura que no choque la PK
+UPDATE PRODUCTO SET Precio_actual = 99999 WHERE ID_producto = 1;
+SELECT * FROM AuditoriaProducto WHERE ID_producto = 1;
+
+
+
+
+CREATE TABLE TablaPrueba (id INT);
+select * from TablaPrueba;
+DISABLE TRIGGER impedir_borrar_tablas ON DATABASE;
+DROP TABLE TablaPrueba;
+ENABLE TRIGGER impedir_borrar_tablas ON DATABASE;
+
 
 -----------------------------------------------------------------------------------

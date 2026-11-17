@@ -6,8 +6,7 @@ Son bloques de código SQL (a menudo extendidos con
 lógica procedimental como bucles y condicionales) que se almacenan directamente en la base de
 datos. Pensamos en ellos como subrutinas o métodos dentro de tu base de datos, que encapsulan
 lógica de negocio.
-**Procedimiento almacenado (Stored Procedure):** programa SQL que ejecuta una o varias operaciones. Se invoca con `EXEC`, recibe parámetros (de entrada y de salida con `OUTPUT`), pueden o no
-devolver un conjunto de resultados y puede modificar datos (`INSERT`, `UPDATE`, `DELETE`).
+**Procedimiento almacenado (Stored Procedure):** programa SQL que ejecuta una o varias operaciones. Se invoca con `EXEC`, recibe parámetros (de entrada y de salida con `OUTPUT`), pueden o no devolver un conjunto de resultados y puede modificar datos (`INSERT`, `UPDATE`, `DELETE`).
 
 **Función almacenada (Function):** 
 Rutina que recibe parámetros y siempre devuelve un valor o una tabla. Se usa dentro de expresiones (`SELECT`, `WHERE`, etc) y **no puede modificar datos**.
